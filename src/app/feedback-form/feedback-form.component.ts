@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'feedback-form',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackFormComponent implements OnInit {
 
-  constructor() { }
+  feedbackForm: FormGroup
+
+  constructor(private formBuilder:FormBuilder) {
+
+  }
 
   ngOnInit() {
+    this.feedbackForm = this.formBuilder.group({
+      email: [ '', Validators.required ],
+      password: [ '', Validators.required ]
+    })
+  }
+
+  submitFeedback(data) {
+    console.log(data);
   }
 
 }

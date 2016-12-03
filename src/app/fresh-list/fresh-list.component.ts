@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FirebaseListObservable, AngularFire} from "angularfire2";
 
 @Component({
   selector: 'fresh-list',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FreshListComponent implements OnInit {
 
-  constructor() { }
+  fresh_list: FirebaseListObservable<any[]>;
+
+  constructor(private af: AngularFire) {
+    this.fresh_list = af.database.list('/feedback');
+  }
 
   ngOnInit() {
   }

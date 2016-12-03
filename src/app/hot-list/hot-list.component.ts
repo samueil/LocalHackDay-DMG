@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AngularFire, FirebaseListObservable} from "angularfire2";
 
 @Component({
   selector: 'hot-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotListComponent implements OnInit {
 
-  constructor() { }
+  hot_list: FirebaseListObservable<any[]>;
+
+  constructor(private af: AngularFire) {
+    this.hot_list = af.database.list('/feedback');
+  }
 
   ngOnInit() {
+
   }
 
 }

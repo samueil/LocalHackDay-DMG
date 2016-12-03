@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FollowingListComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
