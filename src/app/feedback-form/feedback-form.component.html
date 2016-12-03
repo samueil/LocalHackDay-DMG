@@ -1,39 +1,42 @@
+<script>
+  $('.chips').material_chip();
+  $('.chips-initial').material_chip({
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
+  });
+  $('.chips-placeholder').material_chip({
+    placeholder: 'Enter a tag',
+    secondaryPlaceholder: '+Tag',
+  });
+
+  var chip = {
+    tag: 'chip content',
+    image: '', //optional
+    id: 1, //optional
+  };
+
+</script>
+
 <form>
   <div class="row">
-    <div class="input-field col s6">
-      <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-      <label for="first_name">First Name</label>
-    </div>
-    <div class="input-field col s6">
-      <input id="last_name" type="text" class="validate">
-      <label for="last_name">Last Name</label>
+    <div class="input-field col s12">
+      <input placeholder="Choose titel" id="titel" type="text" class="validate">
+      <label for="titel">Titel</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
-      <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-      <label for="disabled">Disabled</label>
+      <input id="text" type="text" class="validate">
+      <label for="text">Insert Feedback here...</label>
     </div>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="password" type="password" class="validate">
-      <label for="password">Password</label>
-    </div>
+  <div class = "row">
+    <a class="waves-effect waves-light btn right">Submit</a>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="email" type="email" class="validate">
-      <label for="email">Email</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s12">
-      This is an inline input field:
-      <div class="input-field inline">
-        <input id="email" type="email" class="validate">
-        <label for="email" data-error="wrong" data-success="right">Email</label>
-      </div>
-    </div>
-  </div>
+
 </form>
