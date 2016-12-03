@@ -1,42 +1,18 @@
-<script>
-  $('.chips').material_chip();
-  $('.chips-initial').material_chip({
-    data: [{
-      tag: 'Apple',
-    }, {
-      tag: 'Microsoft',
-    }, {
-      tag: 'Google',
-    }],
-  });
-  $('.chips-placeholder').material_chip({
-    placeholder: 'Enter a tag',
-    secondaryPlaceholder: '+Tag',
-  });
-
-  var chip = {
-    tag: 'chip content',
-    image: '', //optional
-    id: 1, //optional
-  };
-
-</script>
-
-<form>
+<form #f="ngForm" [formGroup]="feedbackForm" (ngSubmit)="submitFeedback(f.value)">
   <div class="row">
     <div class="input-field col s12">
-      <input placeholder="Choose titel" id="titel" type="text" class="validate">
-      <label for="titel">Titel</label>
+      <input placeholder="Choose title" id="title" type="text" class="validate" formControlName="title">
+      <label for="title">Titel</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
-      <input id="text" type="text" class="validate">
+      <input id="text" type="text" class="validate" formControlName="text">
       <label for="text">Insert Feedback here...</label>
     </div>
   </div>
-  <div class = "row">
-    <a class="waves-effect waves-light btn right">Submit</a>
-  </div>
 
+  <div>
+    <button type="submit" class="waves-effect waves-light btn right">Submit</button>
+  </div>
 </form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AngularFire} from "angularfire2";
 
 @Component({
   selector: 'feedback-form',
@@ -8,21 +9,22 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class FeedbackFormComponent implements OnInit {
 
-  feedbackForm: FormGroup
+  feedbackForm: FormGroup;
 
-  constructor(private formBuilder:FormBuilder) {
+  constructor(private formBuilder:FormBuilder, private af:AngularFire) {
 
   }
 
   ngOnInit() {
     this.feedbackForm = this.formBuilder.group({
-      email: [ '', Validators.required ],
-      password: [ '', Validators.required ]
+      title: [ '', Validators.required ],
+      text: [ '', Validators.required ]
     })
   }
 
   submitFeedback(data) {
     console.log(data);
+    this.af.database.list('/feedback').push(data);
   }
 
 }
