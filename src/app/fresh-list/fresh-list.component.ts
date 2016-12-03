@@ -11,7 +11,11 @@ export class FreshListComponent implements OnInit {
   fresh_list: FirebaseListObservable<any[]>;
 
   constructor(private af: AngularFire) {
-    this.fresh_list = af.database.list('/feedback');
+    this.fresh_list = af.database.list('/feedback', {
+      query: {
+        orderByChild: 'date',
+      }
+    });
   }
 
   ngOnInit() {

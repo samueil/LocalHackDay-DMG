@@ -18,13 +18,14 @@ export class FeedbackFormComponent implements OnInit {
   ngOnInit() {
     this.feedbackForm = this.formBuilder.group({
       title: [ '', Validators.required ],
-      text: [ '', Validators.required ]
+      text: [ '', Validators.required ],
+      date: Date.now()
     })
   }
 
   submitFeedback(data) {
-    console.log(data);
     this.af.database.list('/feedback').push(data);
+    this.feedbackForm.reset();
   }
 
 }
