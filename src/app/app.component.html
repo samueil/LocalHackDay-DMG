@@ -1,5 +1,12 @@
 <ul>
   <li class="text" *ngFor="let item of items | async">
-    {{item.$value}}
+    {{item.name}}
   </li>
 </ul>
+
+<div class="row">
+  <div class="input-field col s6">
+    <input value="" id="email" type="text" class="validate" (keyup.enter)="addEntry()">
+    <label class="active" for="email">email</label>
+  </div>
+</div>

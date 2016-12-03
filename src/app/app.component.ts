@@ -15,4 +15,8 @@ export class AppComponent {
     this.items = af.database.list('/feedback');
   }
 
+  addEntry() {
+    this.items.push({ name: "Hans"});
+  }
+
 }
