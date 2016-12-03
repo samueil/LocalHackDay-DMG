@@ -1,0 +1,30 @@
+{
+  "name": "feedbackoverflow",
+  "version": "1.0.0",
+  "description": "A feedback formula for students at hslu",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^3.6.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samueil/LocalHackDay-DMG.git"
+  },
+  "keywords": [
+    "hslu",
+    "dmg",
+    "nosql",
+    "feedback",
+    "formula"
+  ],
+  "author": "aneglo, chessrookie, edudorus, samueil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samueil/LocalHackDay-DMG/issues"
+  },
+  "homepage": "https://github.com/samueil/LocalHackDay-DMG#readme"
+}
