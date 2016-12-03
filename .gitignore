@@ -1,0 +1,6 @@
+node_modules/
+.node-persist/
+public/components
+.nyc_output
+.sass-cache
+npm-debug.log
