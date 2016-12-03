@@ -1,12 +1,37 @@
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.name}}
-  </li>
-</ul>
+<nav class="nav-extended">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Logo</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a>Messages</a></li>
+      <li><a>My Posts</a></li>
+      <li><a>Profile</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a>Messages</a></li>
+      <li><a>My Posts</a></li>
+      <li><a>Profile</a></li>
+    </ul>
 
-<div class="row">
-  <div class="input-field col s6">
-    <input value="" id="email" type="text" class="validate" (keyup.enter)="addEntry()">
-    <label class="active" for="email">email</label>
+    <ul class="tabs tabs-transparent">
+      <li class="tab"><a href="#fresh">Fresh</a></li>
+      <li class="tab"><a class="active" href="#hot">Hot</a></li>
+      <li class="tab"><a href="#following">Following</a></li>
+    </ul>
   </div>
+</nav>
+<div class="valign-wrapper">
+
+  <div id="fresh" class="col s12">
+    <fresh-list></fresh-list>
+  </div>
+
+  <div id="hot" class="col s12">
+    <hot-list></hot-list>
+  </div>
+
+  <div id="following" class="col s12">
+    <following-list></following-list>
+  </div>
+
 </div>

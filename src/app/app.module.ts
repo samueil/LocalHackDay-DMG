@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {AngularFireModule} from "angularfire2";
+import {FreshListComponent} from "./fresh-list/fresh-list.component";
+import {HotListComponent} from "./hot-list/hot-list.component";
+import { FollowingListComponent } from './following-list/following-list.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -16,7 +19,10 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FreshListComponent,
+    HotListComponent,
+    FollowingListComponent
   ],
   imports: [
     BrowserModule,
