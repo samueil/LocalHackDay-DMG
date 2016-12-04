@@ -53181,12 +53181,15 @@ var FeedbackFormComponent = (function () {
     };
     FeedbackFormComponent.prototype.submitFeedback = function (data) {
         var tags = [];
-        $('.chips > .chip').each(function () {
+        $('.chips > .chip').contents().filter(function () {
+            return this.nodeType == 3;
+        }).each(function () {
             tags.push($(this).text());
         });
         data.tags = tags;
         console.log(data);
         data.vote = 0;
+        // Clean form
         this.af.database.list('/feedback').push(data);
         this.feedbackForm.reset();
         $('.chips-placeholder').material_chip({
@@ -57148,7 +57151,7 @@ module.exports = ""
 /* 631 */
 /***/ function(module, exports) {
 
-module.exports = "<nav class=\"nav-extended\">\n  <div class=\"nav-wrapper\">\n    <div class=\"container\">\n    <a href=\"#\" class=\"brand-logo\">  Feedback Overflow</a>\n    <a href=\"#\" data-activates=\"mobile-demo\" class=\"button-collapse\"><i class=\"material-icons\">menu</i></a>\n    <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n      <li><a>Messages</a></li>\n      <li><a>My Posts</a></li>\n      <li><a>Profile</a></li>\n    </ul>\n    <ul class=\"side-nav\" id=\"mobile-demo\">\n      <li><a>Messages</a></li>\n      <li><a>My Posts</a></li>\n      <li><a>Profile</a></li>\n    </ul>\n\n    <ul class=\"tabs tabs-transparent\">\n      <li class=\"tab\"><a href=\"#fresh\">Fresh</a></li>\n      <li class=\"tab\"><a class=\"active\" href=\"#hot\">Hot</a></li>\n      <li class=\"tab\"><a href=\"#following\">Following</a></li>\n      <li class=\"tab\"><a href=\"#new\">New Feedback</a></li>\n    </ul>\n    </div>\n  </div>\n</nav>\n<div class=\"container\">\n\n  <div id=\"fresh\" class=\"col s12\">\n    <fresh-list></fresh-list>\n  </div>\n\n  <div id=\"hot\" class=\"col s12\">\n    <hot-list></hot-list>\n  </div>\n\n  <div id=\"following\" class=\"col s12\">\n    <following-list></following-list>\n  </div>\n\n  <div id=\"new\" class=\"col s12\">\n    <br>\n    <feedback-form></feedback-form>\n  </div>\n\n</div>\n"
+module.exports = "<nav class=\"nav-extended\">\n  <div class=\"nav-wrapper light-blue darken-1\">\n    <div class=\"container\">\n    <a href=\"#\" class=\"brand-logo\">  Feedback Overflow</a>\n    <a href=\"#\" data-activates=\"mobile-demo\" class=\"button-collapse\"><i class=\"material-icons\">menu</i></a>\n    <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">\n      <li><a>Messages</a></li>\n      <li><a>My Posts</a></li>\n      <li><a>Profile</a></li>\n    </ul>\n    <ul class=\"side-nav\" id=\"mobile-demo\">\n      <li><a>Messages</a></li>\n      <li><a>My Posts</a></li>\n      <li><a>Profile</a></li>\n    </ul>\n\n    <ul class=\"tabs tabs-transparent\">\n      <li class=\"tab\"><a href=\"#fresh\">Fresh</a></li>\n      <li class=\"tab\"><a class=\"active\" href=\"#hot\">Hot</a></li>\n      <!--<li class=\"tab\"><a href=\"#following\">Following</a></li>-->\n      <li class=\"tab\"><a href=\"#new\">New Feedback</a></li>\n    </ul>\n    </div>\n  </div>\n</nav>\n<div class=\"container\">\n\n  <div id=\"fresh\" class=\"col s12\">\n    <fresh-list></fresh-list>\n  </div>\n\n  <div id=\"hot\" class=\"col s12\">\n    <hot-list></hot-list>\n  </div>\n\n  <!--<div id=\"following\" class=\"col s12\">\n    <following-list></following-list>\n  </div>-->\n\n  <div id=\"new\" class=\"col s12\">\n    <br>\n    <feedback-form></feedback-form>\n  </div>\n\n</div>\n"
 
 /***/ },
 /* 632 */
@@ -57166,13 +57169,13 @@ module.exports = "<br>\n<div class=\"row\">\n  <div class=\"card\">\n    <div cl
 /* 634 */
 /***/ function(module, exports) {
 
-module.exports = "<br>\n<div class=\"row\">\n  <div class=\"col s12\" *ngFor=\"let feedback of fresh_list | async | reverse\">\n    <div class=\"card\">\n      <div class=\"card-content\">\n        <span class=\"card-title\">{{feedback.title}} <span class=\"new badge\" data-badge-caption=\"Votes\">{{feedback.vote}}</span></span>\n        <p>{{feedback.text}}</p>\n        <br>\n\n        <div class=\"chip\" *ngFor=\"let tag of feedback.tags\">\n          #{{tag}}\n        </div>\n\n        <div class=\"card-action\">\n          <a class=\"waves-effect waves-teal btn-flat green-text text-darken-1\" (click)=\"agree(feedback)\">Agree</a>\n          <a class=\"waves-effect waves-teal btn-flat red-text text-darken-1\" (click)=\"disagree(feedback)\">Disagree</a>\n          <a class=\"waves-effect waves-teal btn-flat right\">Reply</a>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<br>\n<div class=\"row\">\n  <div class=\"col s12\" *ngFor=\"let feedback of fresh_list | async | reverse\">\n    <div class=\"card\">\n      <div class=\"card-content hoverable\">\n        <span class=\"card-title\">{{feedback.title}} <span class=\"new badge green darken-1\" data-badge-caption=\"Votes\"><b>{{feedback.vote}}</b></span></span>\n        <hr>\n        <p>{{feedback.text}}</p>\n        <br>\n\n        <div class=\"chip\" *ngFor=\"let tag of feedback.tags\">\n          #{{tag}}\n        </div>\n\n\n        <div class=\"card-action\">\n          <a class=\"waves-effect waves-teal btn-flat green-text text-darken-1\" (click)=\"agree(feedback)\">Agree</a>\n          <a class=\"waves-effect waves-teal btn-flat red-text text-darken-1\" (click)=\"disagree(feedback)\">Disagree</a>\n          <a class=\"waves-effect waves-teal btn-flat right\">Reply</a>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ },
 /* 635 */
 /***/ function(module, exports) {
 
-module.exports = "<br>\n<div class=\"row\">\n  <div class=\"col s12\" *ngFor=\"let feedback of hot_list | async | hot | reverse\">\n    <div class=\"card\">\n      <div class=\"card-content hoverable\">\n        <span class=\"card-title\">{{feedback.title}} <span class=\"new badge\" data-badge-caption=\"Votes\">{{feedback.vote}}</span></span>\n        <p>{{feedback.text}}</p>\n        <br>\n\n        <div class=\"chip\" *ngFor=\"let tag of feedback.tags\">\n          #{{tag}}\n        </div>\n\n\n        <div class=\"card-action\">\n          <a class=\"waves-effect waves-teal btn-flat green-text text-darken-1\" (click)=\"agree(feedback)\">Agree</a>\n          <a class=\"waves-effect waves-teal btn-flat red-text text-darken-1\" (click)=\"disagree(feedback)\">Disagree</a>\n          <a class=\"waves-effect waves-teal btn-flat right\">Reply</a>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<br>\n<div class=\"row\">\n  <div class=\"col s12\" *ngFor=\"let feedback of hot_list | async | hot | reverse\">\n    <div class=\"card\">\n      <div class=\"card-content hoverable\">\n        <span class=\"card-title\">{{feedback.title}} <span class=\"new badge green darken-1\" data-badge-caption=\"Votes\"><b>{{feedback.vote}}</b></span></span>\n        <hr>\n        <p>{{feedback.text}}</p>\n        <br>\n\n        <div class=\"chip\" *ngFor=\"let tag of feedback.tags\">\n          #{{tag}}\n        </div>\n\n\n        <div class=\"card-action\">\n          <a class=\"waves-effect waves-teal btn-flat green-text text-darken-1\" (click)=\"agree(feedback)\">Agree</a>\n          <a class=\"waves-effect waves-teal btn-flat red-text text-darken-1\" (click)=\"disagree(feedback)\">Disagree</a>\n          <a class=\"waves-effect waves-teal btn-flat right\">Reply</a>\n        </div>\n      </div>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ },
 /* 636 */

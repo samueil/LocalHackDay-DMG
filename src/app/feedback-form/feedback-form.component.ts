@@ -27,12 +27,17 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
   submitFeedback(data) {
     let tags = [];
 
-    $('.chips > .chip').each(function () {
+    $('.chips > .chip').contents().filter(function () {
+      return this.nodeType == 3;
+    }).each(function () {
       tags.push($(this).text());
     });
+
     data.tags = tags;
     console.log(data);
     data.vote = 0;
+
+    // Clean form
     this.af.database.list('/feedback').push(data);
     this.feedbackForm.reset();
     $('.chips-placeholder').material_chip({
