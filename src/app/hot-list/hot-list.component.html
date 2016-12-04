@@ -3,7 +3,8 @@
   <div class="col s12" *ngFor="let feedback of hot_list | async | hot | reverse">
     <div class="card">
       <div class="card-content hoverable">
-        <span class="card-title">{{feedback.title}} <span class="new badge" data-badge-caption="Votes">{{feedback.vote}}</span></span>
+        <span class="card-title">{{feedback.title}} <span class="new badge green darken-1" data-badge-caption="Votes"><b>{{feedback.vote}}</b></span></span>
+        <hr>
         <p>{{feedback.text}}</p>
         <br>
 
