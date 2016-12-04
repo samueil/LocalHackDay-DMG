@@ -14,8 +14,26 @@ export var HotListComponent = (function () {
     function HotListComponent(af, feedbackService) {
         this.af = af;
         this.feedbackService = feedbackService;
-        this.hot_list = af.database.list('feedback');
+        this.hot_list = af.database.list('/feedback', {
+            query: {
+                orderByChild: 'vote'
+            }
+        });
     }
+    HotListComponent.prototype.agree = function (feedback) {
+        if (!feedback.vote) {
+            feedback.vote = 0;
+        }
+        feedback.vote++;
+        this.hot_list.update(feedback.$key, { vote: feedback.vote });
+    };
+    HotListComponent.prototype.disagree = function (feedback) {
+        if (!feedback.vote) {
+            feedback.vote = 0;
+        }
+        feedback.vote--;
+        this.hot_list.update(feedback.$key, { vote: feedback.vote });
+    };
     HotListComponent = __decorate([
         Component({
             selector: 'hot-list',

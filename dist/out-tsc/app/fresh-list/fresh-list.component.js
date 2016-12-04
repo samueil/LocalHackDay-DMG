@@ -20,6 +20,20 @@ export var FreshListComponent = (function () {
     }
     FreshListComponent.prototype.ngOnInit = function () {
     };
+    FreshListComponent.prototype.agree = function (feedback) {
+        if (!feedback.vote) {
+            feedback.vote = 0;
+        }
+        feedback.vote++;
+        this.fresh_list.update(feedback.$key, { vote: feedback.vote });
+    };
+    FreshListComponent.prototype.disagree = function (feedback) {
+        if (!feedback.vote) {
+            feedback.vote = 0;
+        }
+        feedback.vote--;
+        this.fresh_list.update(feedback.$key, { vote: feedback.vote });
+    };
     FreshListComponent = __decorate([
         Component({
             selector: 'fresh-list',

@@ -19,6 +19,7 @@ import { FollowingListComponent } from './following-list/following-list.componen
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { FeedbackService } from "./feedback.service";
 import { ReversePipe } from './reverse.pipe';
+import { HotPipe } from "./hot.pipe";
 // Must export the config
 export var firebaseConfig = {
     apiKey: "AIzaSyB2Nc9GjHuZ8uE-PQEuwjm1dFsbEdSmTS0",
@@ -37,7 +38,8 @@ export var AppModule = (function () {
                 HotListComponent,
                 FollowingListComponent,
                 FeedbackFormComponent,
-                ReversePipe
+                ReversePipe,
+                HotPipe
             ],
             imports: [
                 BrowserModule,

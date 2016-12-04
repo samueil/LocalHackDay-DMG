@@ -1,8 +1,9 @@
+<br>
 <div class="row">
   <div class="col s12" *ngFor="let feedback of fresh_list | async | reverse">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{feedback.title}}</span>
+        <span class="card-title">{{feedback.title}} <span class="new badge" data-badge-caption="Votes">{{feedback.vote}}</span></span>
         <p>{{feedback.text}}</p>
         <br>
 
@@ -21,9 +22,9 @@
 
 
         <div class="card-action">
-          <a href="#">Agree</a>
-          <a href="#">Disagree</a>
-          <a href="#">Reply</a>
+          <a class="waves-effect waves-teal btn-flat green-text text-darken-1" (click)="agree(feedback)">Agree</a>
+          <a class="waves-effect waves-teal btn-flat red-text text-darken-1" (click)="disagree(feedback)">Disagree</a>
+          <a class="waves-effect waves-teal btn-flat right">Reply</a>
         </div>
       </div>
     </div>

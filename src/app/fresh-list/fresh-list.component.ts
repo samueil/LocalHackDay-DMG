@@ -21,4 +21,20 @@ export class FreshListComponent implements OnInit {
   ngOnInit() {
   }
 
+  agree(feedback) {
+    if (!feedback.vote) {
+      feedback.vote = 0;
+    }
+    feedback.vote++;
+    this.fresh_list.update(feedback.$key, {vote: feedback.vote});
+  }
+
+  disagree(feedback) {
+    if (!feedback.vote) {
+      feedback.vote = 0;
+    }
+    feedback.vote--;
+    this.fresh_list.update(feedback.$key, {vote: feedback.vote});
+  }
+
 }

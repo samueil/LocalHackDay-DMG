@@ -23,6 +23,7 @@ export var FeedbackFormComponent = (function () {
         });
     };
     FeedbackFormComponent.prototype.submitFeedback = function (data) {
+        data.vote = 0;
         this.af.database.list('/feedback').push(data);
         this.feedbackForm.reset();
     };

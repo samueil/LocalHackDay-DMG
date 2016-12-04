@@ -14,6 +14,26 @@ export class HotListComponent {
   hot_list: FirebaseListObservable<any>;
 
   constructor(private af: AngularFire, private feedbackService: FeedbackService) {
-    this.hot_list = af.database.list('feedback');
+    this.hot_list = af.database.list('/feedback', {
+      query: {
+        orderByChild: 'vote'
+      }
+    });
+  }
+
+  agree(feedback) {
+    if (!feedback.vote) {
+      feedback.vote = 0;
+    }
+    feedback.vote++;
+    this.hot_list.update(feedback.$key, {vote: feedback.vote});
+  }
+
+  disagree(feedback) {
+    if (!feedback.vote) {
+      feedback.vote = 0;
+    }
+    feedback.vote--;
+    this.hot_list.update(feedback.$key, {vote: feedback.vote});
   }
 }

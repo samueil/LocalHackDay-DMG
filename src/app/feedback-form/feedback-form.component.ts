@@ -24,6 +24,7 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   submitFeedback(data) {
+    data.vote = 0;
     this.af.database.list('/feedback').push(data);
     this.feedbackForm.reset();
   }
