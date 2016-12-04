@@ -12,6 +12,7 @@ import { AngularFire } from "angularfire2";
 export var FreshListComponent = (function () {
     function FreshListComponent(af) {
         this.af = af;
+        this.deleteLimit = -10;
         this.fresh_list = af.database.list('/feedback', {
             query: {
                 orderByKey: true
@@ -32,7 +33,12 @@ export var FreshListComponent = (function () {
             feedback.vote = 0;
         }
         feedback.vote--;
-        this.fresh_list.update(feedback.$key, { vote: feedback.vote });
+        if (feedback.vote <= this.deleteLimit) {
+            this.fresh_list.remove(feedback.$key);
+        }
+        else {
+            this.fresh_list.update(feedback.$key, { vote: feedback.vote });
+        }
     };
     FreshListComponent = __decorate([
         Component({

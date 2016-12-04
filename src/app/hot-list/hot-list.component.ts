@@ -12,6 +12,7 @@ import {feedback} from "../feedback";
 export class HotListComponent {
 
   hot_list: FirebaseListObservable<any>;
+  deleteLimit = -10;
 
   constructor(private af: AngularFire, private feedbackService: FeedbackService) {
     this.hot_list = af.database.list('/feedback', {
@@ -33,7 +34,13 @@ export class HotListComponent {
     if (!feedback.vote) {
       feedback.vote = 0;
     }
+
     feedback.vote--;
-    this.hot_list.update(feedback.$key, {vote: feedback.vote});
+
+    if (feedback.vote <= this.deleteLimit) {
+      this.hot_list.remove(feedback.$key);
+    } else {
+      this.hot_list.update(feedback.$key, {vote: feedback.vote});
+    }
   }
 }

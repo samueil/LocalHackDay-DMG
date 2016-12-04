@@ -9,6 +9,7 @@ import {FirebaseListObservable, AngularFire} from "angularfire2";
 export class FreshListComponent implements OnInit {
 
   fresh_list: FirebaseListObservable<any[]>;
+  deleteLimit = -10;
 
   constructor(private af: AngularFire) {
     this.fresh_list = af.database.list('/feedback', {
@@ -33,8 +34,15 @@ export class FreshListComponent implements OnInit {
     if (!feedback.vote) {
       feedback.vote = 0;
     }
+
     feedback.vote--;
-    this.fresh_list.update(feedback.$key, {vote: feedback.vote});
+
+    if (feedback.vote <= this.deleteLimit) {
+      this.fresh_list.remove(feedback.$key);
+    } else {
+      this.fresh_list.update(feedback.$key, {vote: feedback.vote});
+    }
+
   }
 
 }
