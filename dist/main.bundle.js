@@ -53253,6 +53253,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var FreshListComponent = (function () {
     function FreshListComponent(af) {
         this.af = af;
+        this.deleteLimit = -10;
         this.fresh_list = af.database.list('/feedback', {
             query: {
                 orderByKey: true
@@ -53273,7 +53274,12 @@ var FreshListComponent = (function () {
             feedback.vote = 0;
         }
         feedback.vote--;
-        this.fresh_list.update(feedback.$key, { vote: feedback.vote });
+        if (feedback.vote <= this.deleteLimit) {
+            this.fresh_list.remove(feedback.$key);
+        }
+        else {
+            this.fresh_list.update(feedback.$key, { vote: feedback.vote });
+        }
     };
     FreshListComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
@@ -53313,6 +53319,7 @@ var HotListComponent = (function () {
     function HotListComponent(af, feedbackService) {
         this.af = af;
         this.feedbackService = feedbackService;
+        this.deleteLimit = -10;
         this.hot_list = af.database.list('/feedback', {
             query: {
                 orderByChild: 'vote'
@@ -53331,7 +53338,12 @@ var HotListComponent = (function () {
             feedback.vote = 0;
         }
         feedback.vote--;
-        this.hot_list.update(feedback.$key, { vote: feedback.vote });
+        if (feedback.vote <= this.deleteLimit) {
+            this.hot_list.remove(feedback.$key);
+        }
+        else {
+            this.hot_list.update(feedback.$key, { vote: feedback.vote });
+        }
     };
     HotListComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Component */])({
