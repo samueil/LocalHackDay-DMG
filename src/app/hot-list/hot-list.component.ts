@@ -1,21 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Pipe} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from "angularfire2";
+import {FeedbackService} from "../feedback.service";
+import {feedback} from "../feedback";
+
 
 @Component({
   selector: 'hot-list',
   templateUrl: './hot-list.component.html',
   styleUrls: ['./hot-list.component.css']
 })
-export class HotListComponent implements OnInit {
+export class HotListComponent {
 
-  hot_list: FirebaseListObservable<any[]>;
+  hot_list: FirebaseListObservable<any>;
 
-  constructor(private af: AngularFire) {
-    this.hot_list = af.database.list('/feedback');
+  constructor(private af: AngularFire, private feedbackService: FeedbackService) {
+    this.hot_list = af.database.list('feedback');
   }
-
-  ngOnInit() {
-
-  }
-
 }

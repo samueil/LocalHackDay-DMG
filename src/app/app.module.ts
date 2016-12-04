@@ -9,6 +9,8 @@ import {FreshListComponent} from "./fresh-list/fresh-list.component";
 import {HotListComponent} from "./hot-list/hot-list.component";
 import {FollowingListComponent} from './following-list/following-list.component';
 import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
+import {FeedbackService} from "./feedback.service";
+import { ReversePipe } from './reverse.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -24,7 +26,8 @@ export const firebaseConfig = {
     FreshListComponent,
     HotListComponent,
     FollowingListComponent,
-    FeedbackFormComponent
+    FeedbackFormComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,9 @@ export const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    FeedbackService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

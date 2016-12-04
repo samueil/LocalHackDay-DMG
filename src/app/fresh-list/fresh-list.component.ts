@@ -13,7 +13,7 @@ export class FreshListComponent implements OnInit {
   constructor(private af: AngularFire) {
     this.fresh_list = af.database.list('/feedback', {
       query: {
-        orderByChild: 'date',
+        orderByKey: true
       }
     });
   }
