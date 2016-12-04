@@ -12,7 +12,16 @@
     </div>
   </div>
 
+  <div class="chips chips-placeholder"></div>
+
   <div>
     <button type="submit" class="waves-effect waves-light btn right">Submit</button>
   </div>
 </form>
+
+<script type="application/javascript">
+  $('.chips-placeholder').material_chip({
+    placeholder: 'Enter a tag',
+    secondaryPlaceholder: '+Tag',
+  });
+</script>

@@ -7,19 +7,9 @@
         <p>{{feedback.text}}</p>
         <br>
 
-        <div class="chip">
-          #DMG
+        <div class="chip" *ngFor="let tag of feedback.tags">
+          #{{tag}}
         </div>
-        <div class="chip">
-          #HSLU
-        </div>
-        <div class="chip">
-          #MLH
-        </div>
-        <div class="chip">
-          #Rotkreuz
-        </div>
-
 
         <div class="card-action">
           <a class="waves-effect waves-teal btn-flat green-text text-darken-1" (click)="agree(feedback)">Agree</a>
