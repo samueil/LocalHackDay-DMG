@@ -1,45 +1,31 @@
-<nav class="nav-extended">
-  <div class="nav-wrapper light-blue darken-1">
-    <div class="container">
-    <a href="#" class="brand-logo">  Feedback Overflow</a>
-    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a>Messages</a></li>
-      <li><a>My Posts</a></li>
-      <li><a>Profile</a></li>
-    </ul>
-    <ul class="side-nav" id="mobile-demo">
-      <li><a>Messages</a></li>
-      <li><a>My Posts</a></li>
-      <li><a>Profile</a></li>
-    </ul>
+<div>
+  <nav class="nav-extended">
+    <div class="nav-wrapper light-blue darken-1">
+      <div class="container">
+        <a href="#" class="brand-logo"> Feedback Overflow</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a>Messages</a></li>
+          <li><a>My Posts</a></li>
+          <li><a>Profile</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a>Messages</a></li>
+          <li><a>My Posts</a></li>
+          <li><a>Profile</a></li>
+        </ul>
 
-    <ul class="tabs tabs-transparent">
-      <li class="tab"><a href="#fresh">Fresh</a></li>
-      <li class="tab"><a class="active" href="#hot">Hot</a></li>
-      <!--<li class="tab"><a href="#following">Following</a></li>-->
-      <li class="tab"><a href="#new">New Feedback</a></li>
-    </ul>
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a routerLink="/fresh" routerLinkActive="active">Fresh</a></li>
+          <li class="tab"><a routerLink="/hot" routerLinkActive="active">Hot</a></li>
+          <li class="tab"><a routerLink="/new" routerLinkActive="active">New Feedback</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-<div class="container">
-
-  <div id="fresh" class="col s12">
-    <fresh-list></fresh-list>
-  </div>
-
-  <div id="hot" class="col s12">
-    <hot-list></hot-list>
-  </div>
-
-  <!--<div id="following" class="col s12">
-    <following-list></following-list>
-  </div>-->
-
-  <div id="new" class="col s12">
+  </nav>
+  <div class="container">
     <br>
-    <feedback-form></feedback-form>
-  </div>
+    <router-outlet></router-outlet>
 
+  </div>
 </div>

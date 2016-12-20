@@ -1,0 +1,35 @@
+{
+  "feedback": {
+    "_id": {
+      "uid": true,
+      "title": "string",
+      "text": "string",
+      "tags": [
+        {
+          "name": "string"
+        }
+      ],
+      "votes": {
+        "upvotes": [
+          {
+            "uid": true
+          }
+        ],
+        "downvotes": [
+          {
+            "uid": true
+          }
+        ],
+        "total": 0
+      },
+      "responses": [
+        {
+          "uid": true,
+          "text": "string",
+          "date": true,
+          "solution": true
+        }
+      ]
+    }
+  }
+}

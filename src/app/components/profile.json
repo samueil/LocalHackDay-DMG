@@ -1,0 +1,11 @@
+{
+  "profile": {
+    "uid": {
+      "following": [
+        {
+          "_id": true
+        }
+      ]
+    }
+  }
+}

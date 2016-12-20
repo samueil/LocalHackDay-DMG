@@ -1,19 +1,17 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-
-import {AppComponent} from './app.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {AppComponent} from "./app.component";
 import {AngularFireModule} from "angularfire2";
-import {FreshListComponent} from "./fresh-list/fresh-list.component";
-import {HotListComponent} from "./hot-list/hot-list.component";
-import {FollowingListComponent} from './following-list/following-list.component';
-import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
-import {FeedbackService} from "./feedback.service";
-import { ReversePipe } from './reverse.pipe';
-import {HotPipe} from "./hot.pipe";
+import {FreshListComponent} from "./components/fresh-list.component";
+import {HotListComponent} from "./components/hot-list.component";
+import {FeedbackFormComponent} from "./components/feedback-form.component";
+import {FeedbackService} from "./services/feedback.service";
+import {ReversePipe} from "./pipes/reverse.pipe";
+import {LoginComponent} from "./components/login.component";
+import {AppRoutingModule} from "./app-routing.module";
 
-// Must export the config
 export const firebaseConfig = {
   apiKey: "AIzaSyB2Nc9GjHuZ8uE-PQEuwjm1dFsbEdSmTS0",
   authDomain: "feedbackoverflow-3efdc.firebaseapp.com",
@@ -26,10 +24,9 @@ export const firebaseConfig = {
     AppComponent,
     FreshListComponent,
     HotListComponent,
-    FollowingListComponent,
     FeedbackFormComponent,
-    ReversePipe,
-    HotPipe
+    LoginComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
@@ -38,11 +35,14 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [
     FeedbackService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
 }
