@@ -1,6 +1,9 @@
 <div class="container">
   <h3>Mal schön anmelden hier!</h3>
   <br>
+
+  <div class="card-panel deep-orange lighten-4" *ngIf="error">{{ error }}</div>
+
   <form #f="ngForm" [formGroup]="loginForm" (ngSubmit)="login(f.value)">
     <div class="row">
       <div class="input-field col s12">

@@ -6,11 +6,11 @@ import {FeedbackService} from "../services/feedback.service";
   selector: 'hot-list',
   templateUrl: '../templates/hot-list.component.html',
 })
-export class HotListComponent implements OnInit{
+export class HotListComponent implements OnInit {
 
   feedbacks: FirebaseListObservable<any>;
 
-  constructor(private feedbackService: FeedbackService) {
+  constructor(private feedbackService: FeedbackService, public af: AngularFire) {
   }
 
   ngOnInit() {

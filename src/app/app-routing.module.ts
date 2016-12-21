@@ -9,6 +9,11 @@ import {RegisterComponent} from "./components/register.component";
 const appRoutes: Routes = [
 
   {
+    path: '',
+    redirectTo: '/fresh',
+    pathMatch: 'full'
+  },
+  {
     path: 'fresh',
     component: FreshListComponent
   },

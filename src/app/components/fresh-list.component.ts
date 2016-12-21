@@ -10,7 +10,7 @@ export class FreshListComponent implements OnInit {
 
   feedbacks: FirebaseListObservable<any[]>;
 
-  constructor(private feedbackService:FeedbackService) {
+  constructor(private feedbackService: FeedbackService, public af: AngularFire) {
   }
 
   ngOnInit() {

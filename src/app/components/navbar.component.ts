@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {AngularFire} from "angularfire2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'navbar',
@@ -7,7 +8,7 @@ import {AngularFire} from "angularfire2";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public af: AngularFire) {
+  constructor(public af: AngularFire, private router: Router) {
   }
 
   ngOnInit() {
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.af.auth.logout();
+    this.router.navigate(['']);
   }
 }
 

@@ -2,6 +2,8 @@
   <h3>Registrier dich mit deiner HSLU Mail</h3>
   <br>
 
+  <div class="card-panel deep-orange lighten-4" *ngIf="error">{{ error }}</div>
+
   <form #f="ngForm" [formGroup]="registerForm" (ngSubmit)="register(f.value)">
     <div class="row">
       <div class="input-field col s12">

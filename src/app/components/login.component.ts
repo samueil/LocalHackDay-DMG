@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {AngularFire, AuthProviders, AuthMethods} from "angularfire2";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+
 @Component({
   selector: 'login-form',
   templateUrl: '../templates/login.component.html',
@@ -8,8 +10,9 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  error: string;
 
-  constructor(private formBuilder: FormBuilder, private af: AngularFire) {
+  constructor(private formBuilder: FormBuilder, private af: AngularFire, private router: Router) {
   }
 
   ngOnInit() {
@@ -27,6 +30,12 @@ export class LoginComponent implements OnInit {
       {
         provider: AuthProviders.Password,
         method: AuthMethods.Password,
+      })
+      .then(success => {
+        this.router.navigate(['']);
+      })
+      .catch(error => {
+        this.error = error.message;
       });
   }
 
