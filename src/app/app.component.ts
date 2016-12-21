@@ -7,7 +7,9 @@ import {AngularFire, FirebaseListObservable} from "angularfire2";
 })
 export class AppComponent {
 
+  auth: any;
+
   constructor(private af: AngularFire) {
-    this.af.auth.subscribe(auth => console.log(auth));
+    this.af.auth.subscribe(auth => this.auth);
   }
 }

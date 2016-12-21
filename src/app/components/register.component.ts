@@ -3,7 +3,7 @@ import {AngularFire} from "angularfire2";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 @Component({
   selector: 'login-form',
-  templateUrl: '../templates/login.component.html',
+  templateUrl: '../templates/register.component.html',
 })
 export class RegisterComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['@stud.hslu.ch', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }

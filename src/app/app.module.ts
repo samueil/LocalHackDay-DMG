@@ -12,6 +12,7 @@ import {ReversePipe} from "./pipes/reverse.pipe";
 import {LoginComponent} from "./components/login.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {RegisterComponent} from "./components/register.component";
+import {NavbarComponent} from "./components/navbar.component";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB2Nc9GjHuZ8uE-PQEuwjm1dFsbEdSmTS0",
@@ -28,6 +29,7 @@ export const firebaseConfig = {
     FeedbackFormComponent,
     LoginComponent,
     RegisterComponent,
+    NavbarComponent,
     ReversePipe
   ],
   imports: [

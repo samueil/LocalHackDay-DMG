@@ -1,0 +1,38 @@
+<nav class="nav-extended">
+  <div class="nav-wrapper light-blue darken-1">
+    <div class="container">
+      <a href="#" class="brand-logo"> Feedback Overflow</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li *ngIf="!(af.auth | async)">
+          <a routerLink="/login" routerLinkActive="active" class="waves-effect waves-light">Login</a>
+        </li>
+        <li *ngIf="!(af.auth | async)">
+          <a routerLink="/register" routerLinkActive="active" class="waves-effect waves-light">Register</a>
+        </li>
+        <li *ngIf="(af.auth | async)">
+          <a (click)="logout()" class="waves-effect waves-light">Logout</a>
+        </li>
+      </ul>
+
+      <ul class="side-nav" id="mobile-demo">
+        <li *ngIf="!(af.auth | async)">
+          <a routerLink="/login" routerLinkActive="active" class="waves-effect waves-light">Login</a>
+        </li>
+        <li *ngIf="!(af.auth | async)">
+          <a routerLink="/register" routerLinkActive="active" class="waves-effect waves-light">Register</a>
+        </li>
+        <li *ngIf="(af.auth | async)">
+          <a (click)="logout()" class="waves-effect waves-light">Logout</a>
+        </li>
+      </ul>
+
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a routerLink="/fresh" routerLinkActive="active">Fresh</a></li>
+        <li class="tab"><a routerLink="/hot" routerLinkActive="active">Hot</a></li>
+        <li class="tab"><a routerLink="/new" routerLinkActive="active">New Feedback</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

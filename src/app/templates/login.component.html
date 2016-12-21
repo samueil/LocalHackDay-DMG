@@ -1,18 +1,22 @@
-<form #f="ngForm" [formGroup]="loginForm" (ngSubmit)="login(f.value)">
-  <div class="row">
-    <div class="input-field col s12">
-      <input placeholder="hans.muster@stud.hlsu.ch" id="email" type="email" class="validate" formControlName="email">
-      <label for="email">E-Mail</label>
+<div class="container">
+  <h3>Mal schön anmelden hier!</h3>
+  <br>
+  <form #f="ngForm" [formGroup]="loginForm" (ngSubmit)="login(f.value)">
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="" id="email" type="email" class="validate" formControlName="email">
+        <label for="email">E-Mail</label>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="password" type="password" class="validate" formControlName="password">
-      <label for="password">Password</label>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate" formControlName="password">
+        <label for="password">Password</label>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <button type="submit" class="waves-effect waves-light btn right">Login</button>
-  </div>
-</form>
+    <div>
+      <button type="submit" class="waves-effect waves-light btn right">Login</button>
+    </div>
+  </form>
+</div>
