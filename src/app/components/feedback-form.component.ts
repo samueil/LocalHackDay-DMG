@@ -1,6 +1,6 @@
 import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AngularFire} from "angularfire2";
+import {FeedbackService} from "../services/feedback.service";
 declare var $;
 
 @Component({
@@ -11,7 +11,7 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
 
   feedbackForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private af: AngularFire) {
+  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService) {
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
     data.vote = 0;
     data.date = {".sv": "timestamp"};
 
-    this.af.database.list('/feedback').push(data);
+    this.feedbackService.saveFeedback(data);
     this.cleanForm();
   }
 

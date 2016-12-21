@@ -11,6 +11,7 @@ import {FeedbackService} from "./services/feedback.service";
 import {ReversePipe} from "./pipes/reverse.pipe";
 import {LoginComponent} from "./components/login.component";
 import {AppRoutingModule} from "./app-routing.module";
+import {RegisterComponent} from "./components/register.component";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB2Nc9GjHuZ8uE-PQEuwjm1dFsbEdSmTS0",
@@ -26,6 +27,7 @@ export const firebaseConfig = {
     HotListComponent,
     FeedbackFormComponent,
     LoginComponent,
+    RegisterComponent,
     ReversePipe
   ],
   imports: [

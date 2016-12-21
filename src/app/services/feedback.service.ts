@@ -24,4 +24,8 @@ export class FeedbackService {
     });
   }
 
+  saveFeedback(data) {
+    this.angularFire.database.list('/feedback').push(data);
+  }
+
 }
