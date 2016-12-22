@@ -1,6 +1,7 @@
 import {Component, OnInit, AfterViewInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FeedbackService} from "../services/feedback.service";
+import {Router} from "@angular/router";
 declare var $;
 
 @Component({
@@ -11,7 +12,7 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
 
   feedbackForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService) {
+  constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService, private router: Router) {
 
   }
 
@@ -35,6 +36,7 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
     data.tags = this.getTags();
     this.feedbackService.saveFeedback(data);
     this.cleanForm();
+    this.router.navigate(['fresh']);
   }
 
   cleanForm() {
