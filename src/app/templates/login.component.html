@@ -1,25 +1,27 @@
-<div class="container">
-  <h3>Mal schön anmelden hier!</h3>
-  <br>
+<div class="row">
+  <div class="card col s6 offset-s3">
+    <div class="card-content">
+      <h4>Mal schön anmelden hier!</h4>
+      <br>
 
-  <div class="card-panel deep-orange lighten-4" *ngIf="error">{{ error }}</div>
+      <div class="card-panel deep-orange lighten-4" *ngIf="error">{{ error }}</div>
 
-  <form #f="ngForm" [formGroup]="loginForm" (ngSubmit)="login(f.value)">
-    <div class="row">
-      <div class="input-field col s12">
-        <input placeholder="" id="email" type="email" class="validate" formControlName="email">
-        <label for="email">E-Mail</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="password" type="password" class="validate" formControlName="password">
-        <label for="password">Password</label>
-      </div>
-    </div>
+      <form #f="ngForm" [formGroup]="loginForm" (ngSubmit)="login(f.value)">
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="" id="email" type="email" class="validate" formControlName="email">
+            <label for="email">E-Mail</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate" formControlName="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
 
-    <div>
-      <button type="submit" class="waves-effect waves-light btn right">Login</button>
+        <button type="submit" class="waves-effect waves-light btn grey darken-1">Login</button>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
