@@ -15,6 +15,6 @@
   <div class="chips chips-placeholder"></div>
 
   <div>
-    <button type="submit" class="waves-effect waves-light btn right">Submit</button>
+    <button type="submit" class="waves-effect waves-light btn right" [disabled]="!feedbackForm.valid">Submit</button>
   </div>
 </form>

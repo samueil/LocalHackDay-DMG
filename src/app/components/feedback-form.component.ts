@@ -12,12 +12,13 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
   feedbackForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private feedbackService: FeedbackService) {
+
   }
 
   ngOnInit() {
     this.feedbackForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      text: ['', Validators.required],
+      title: [null, [Validators.required]],
+      text: [null, [Validators.required]],
     });
   }
 
@@ -29,10 +30,9 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
   }
 
   submitFeedback(data) {
-    data.tags = this.getTags();
     data.vote = 0;
     data.date = {".sv": "timestamp"};
-
+    data.tags = this.getTags();
     this.feedbackService.saveFeedback(data);
     this.cleanForm();
   }

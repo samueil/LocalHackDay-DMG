@@ -22,7 +22,7 @@ export class HotListComponent implements OnInit {
       feedback.vote = 0;
     }
     feedback.vote++;
-    this.feedbacks.update(feedback.$key, {vote: feedback.vote});
+    this.feedbackService.upvote(feedback.$key, feedback.vote);
   }
 
   disagree(feedback) {
