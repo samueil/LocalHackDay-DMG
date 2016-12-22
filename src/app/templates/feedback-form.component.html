@@ -1,20 +1,29 @@
-<form #f="ngForm" [formGroup]="feedbackForm" (ngSubmit)="submitFeedback(f.value)">
-  <div class="row">
-    <div class="input-field col s12">
-      <input placeholder="" id="title" type="text" class="validate" formControlName="title">
-      <label for="title">Titel</label>
+<div class="row">
+  <div class="card col s12 m8 l6 offset-m2 offset-l3">
+    <div class="card-content">
+      <h4>Was ist deine Meinung?</h4>
+      <br>
+      <div class="card-panel deep-orange lighten-2" *ngIf="error">{{ error }}</div>
+
+      <form #f="ngForm" [formGroup]="feedbackForm" (ngSubmit)="submitFeedback(f.value)">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="title" type="text" class="validate" formControlName="title">
+            <label for="title">Titel</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="text" type="text" class="validate" formControlName="text">
+            <label for="text">Insert Feedback here...</label>
+          </div>
+        </div>
+        <div class="chips chips-placeholder"></div>
+
+        <button type="submit" class="waves-effect waves-light btn grey darken-1" [disabled]="!feedbackForm.valid">
+          Ja dann schick mal ab
+        </button>
+      </form>
     </div>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="text" type="text" class="validate" formControlName="text">
-      <label for="text">Insert Feedback here...</label>
-    </div>
-  </div>
-
-  <div class="chips chips-placeholder"></div>
-
-  <div>
-    <button type="submit" class="waves-effect waves-light btn right" [disabled]="!feedbackForm.valid">Submit</button>
-  </div>
-</form>
+</div>
