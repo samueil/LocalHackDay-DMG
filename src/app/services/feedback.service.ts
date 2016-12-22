@@ -1,15 +1,22 @@
 import {Injectable} from "@angular/core";
 import {AngularFire} from "angularfire2";
-import {forEach} from "@angular/router/src/utils/collection";
-
 
 @Injectable()
 export class FeedbackService {
 
   user: any;
+  profile: any;
 
   constructor(private angularFire: AngularFire) {
-    this.angularFire.auth.subscribe(auth => this.user = auth);
+    this.angularFire.auth.subscribe(auth => {
+      this.user = auth;
+      console.log(this.user.uid);
+      if (this.user) {
+        this.angularFire.database.object('/profiles/' + this.user.uid).subscribe(profile => {
+          this.profile = profile;
+        });
+      }
+    });
   }
 
   getHot() {
@@ -29,7 +36,8 @@ export class FeedbackService {
   }
 
   upvote(key: string, votes: number) {
-    this.angularFire.database.object('/feedback/' + key).update({vote: votes, upvotes: this.user.uid});
+    this.angularFire.database.object('/feedback/' + key).update({vote: votes});
+    this.angularFire.database.list('/feedback/' + key + '/upvotes').push(this.user.uid);
     let profile = this.angularFire.database.object('/profiles/' + this.user.uid + '/upvotes');
     profile.update({[key]: true});
   }

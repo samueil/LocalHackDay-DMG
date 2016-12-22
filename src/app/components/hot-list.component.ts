@@ -10,11 +10,16 @@ export class HotListComponent implements OnInit {
 
   feedbacks: FirebaseListObservable<any>;
 
-  constructor(private feedbackService: FeedbackService, public af: AngularFire) {
+  constructor(public feedbackService: FeedbackService, public af: AngularFire) {
   }
 
   ngOnInit() {
     this.feedbacks = this.feedbackService.getHot();
+  }
+
+  hasVoted(votes: any): boolean {
+    console.log(votes);
+    return false;
   }
 
   agree(feedback) {
