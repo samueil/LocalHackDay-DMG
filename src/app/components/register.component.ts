@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {AngularFire} from "angularfire2";
+import {AngularFire, FirebaseApp} from "angularfire2";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -28,12 +28,14 @@ export class RegisterComponent implements OnInit {
       password: data.password
     })
       .then(success => {
+        success.auth.sendEmailVerification();
         this.router.navigate(['']);
       })
       .catch(error => {
         this.error = error.message;
       });
   }
+
 
 }
 
